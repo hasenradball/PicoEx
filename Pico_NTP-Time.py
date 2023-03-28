@@ -17,12 +17,18 @@ led_onboard = machine.Pin('LED', machine.Pin.OUT, value = 0)
 NTP_HOST = 'ptbtime3.ptb.de'
 
 class Wlan():
-    # Constructor
+
     def __init__(self):
+	'''
+	constuctor
+	'''
         self.wlan = network.WLAN(network.STA_IF)
         rp2.country('DE')
     
     def connect(self, config):
+	'''
+	connect method
+	'''
         self.wlan.active(True)
         if not self.wlan.isconnected():
             print('WLAN-Verbindung herstellen')
@@ -52,6 +58,9 @@ class Wlan():
             return False
 
     def disconnect(self):
+	'''
+	disconnect method
+	'''
         print("\nWLAN disconecting...")
         self.wlan.disconnect()
         while self.wlan.isconnected():
