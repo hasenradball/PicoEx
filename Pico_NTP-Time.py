@@ -74,6 +74,7 @@ class Wlan():
         while self.wlan.isconnected():
             time.sleep(0.1)
         print("WLAN disconected!")
+	led_onboard.off()
         return True
 
 class Pico_MESZ():
