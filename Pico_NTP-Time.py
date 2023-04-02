@@ -6,9 +6,9 @@ import machine
 import network
 import rp2
 import sys
-import utime as time
-import usocket as socket
-import ustruct as struct
+import time
+import socket
+import struct
 
 # WLAN-Konfiguration
 config = {'ssid': 'your ssid', 'key': 'your password'}
@@ -72,12 +72,14 @@ class Wlan():
         '''
         disconnect wlan method
         '''
-        print("\nWLAN disconecting...")
+        if not self.wlan.isconnected():
+            return True
+        print("\nWLAN disconnecting...")
         self.wlan.disconnect()
         while self.wlan.isconnected():
             time.sleep(0.1)
-        print("WLAN disconected!")
-	led_onboard.off()
+        print("WLAN disconnected!")
+        led_onboard.off()
         return True
 
 class Pico_MESZ():
